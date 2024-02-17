@@ -25,10 +25,15 @@ test {
 	useJUnitPlatform()
 }
 
-
+// Configure SonarQube properties
 sonarqube {
-    properties {
-        property 'sonar.host.url', 'http://34.125.201.58:9000'
-        property 'sonar.login', '******'
-    }
+	properties {
+		property 'sonar.host.url', 'http://34.125.201.58:9000'
+		property 'sonar.login', '******'
+	}
+}
+
+// Apply the recommended fix for the deprecated 'war' plugin
+tasks.withType(War) {
+	enabled = false
 }
